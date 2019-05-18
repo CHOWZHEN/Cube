@@ -24,6 +24,7 @@
         var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);//添加相机
             camera.position.z = 5;
         var controls = new THREE.DeviceOrientationControls( camera );
+		
         var geometry = new THREE.CubeGeometry(1,1,1);
         var material = new THREE.MeshBasicMaterial( {
 					map: new THREE.TextureLoader().load( 'examples/textures/3.jpg' )
@@ -42,6 +43,7 @@
             requestAnimationFrame(render);
             // cube.rotation.x += 0.1;
             // cube.rotation.y += 0.1;
+			controls.update();
             renderer.render(scene, camera);
         }
         render();
