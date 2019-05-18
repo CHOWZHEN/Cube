@@ -36,8 +36,8 @@
  
         var container=document.getElementById('onGeometry').appendChild(renderer.domElement);
  
-        //var orbit = new THREE.OrbitControls( camera, container );
-            //orbit.addEventListener( 'change', render );
+        var orbit = new THREE.OrbitControls( camera, container );
+            orbit.addEventListener( 'change', render );
          
         function render() {
             requestAnimationFrame(render);
