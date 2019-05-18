@@ -43,20 +43,23 @@
         var cube = new THREE.Mesh(geometry, material); 
 		scene.add(cube);
    
-		renderer = new THREE.WebGLRenderer( { antialias: true } );
-				renderer.setPixelRatio( window.devicePixelRatio );
-				renderer.setSize( window.innerWidth, window.innerHeight );
-				document.body.appendChild( renderer.domElement );
- 
+	
+	
         var container=document.getElementById('onGeometry').appendChild(renderer.domElement);
  
         var orbit = new THREE.OrbitControls( camera, container );
             orbit.addEventListener( 'change', render );
 			
+			
+			renderer = new THREE.WebGLRenderer( { antialias: true } );
+			renderer.setPixelRatio( window.devicePixelRatio );
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			document.body.appendChild( renderer.domElement );
+			
 		window.addEventListener( 'resize', onWindowResize, false );	
 	}
        
-	   function animate() {
+	  function animate() {
 
 				window.requestAnimationFrame( animate );
 
@@ -72,7 +75,7 @@
 
 				renderer.setSize( window.innerWidth, window.innerHeight );
 
-			}  
+		}  
         
  
     </script>
