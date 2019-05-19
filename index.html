@@ -94,10 +94,10 @@
 		
 		//
 		function loadTextures(textureURLs, callback) {
-    var loaded = 0;
+          var load = 0;
 
-    function loadedOne() {
-        loaded++;
+          function loadedOne() {
+             load++;
         if (callback && loaded == textureURLs.length) {
             for (var i = 0; i < textureURLs; i++)
                 textures[i].needsUpdate = true;
@@ -160,7 +160,7 @@
  
         function render() {
             controls.update();
-			controls1.update();
+			controls1.update();/
             stats.update();
             requestAnimationFrame(render);
             renderer.render(scene, camera);
