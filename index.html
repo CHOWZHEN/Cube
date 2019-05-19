@@ -51,12 +51,12 @@
             scene.background = new THREE.CubeTextureLoader()
                 .setPath('examples/textures/').load(
                     [
-                        'posx.jpg',
-                        'negx.jpg',
-                        'posy.jpg',
-                        'negy.jpg',
-                        'posz.jpg',
-                        'negz.jpg'
+                        'posx2.jpg',
+                        'negx2.jpg',
+                        'posy2.jpg',
+                        'negy2.jpg',
+                        'posz2.jpg',
+                        'negz2.jpg'
                     ]
                 );
  
@@ -94,10 +94,10 @@
 		
 		//
 		function loadTextures(textureURLs, callback) {
-          var load = 0;
+    var loaded = 0;
 
-          function loadedOne() {
-             load++;
+    function loadedOne() {
+        loaded++;
         if (callback && loaded == textureURLs.length) {
             for (var i = 0; i < textureURLs; i++)
                 textures[i].needsUpdate = true;
@@ -116,12 +116,12 @@
         function textureBox() {
 		 let geometry = new THREE.BoxGeometry(3, 3, 3, 30, 30, 30);
          let textureURLs = [ // URLs of the six faces of the cube map 
-            "examples/textures/posx.jpg", // Note:  The order in which
-            "examples/textures/negx.jpg", //   the images are listed is
-            "examples/textures/posy.jpg", //   important.
-            "examples/textures/negy.jpg",
-            "examples/textures/posz.jpg",
-            "examples/textures/negz.jpg"
+            "examples/textures/posx2.jpg", // Note:  The order in which
+            "examples/textures/negx2.jpg", //   the images are listed is
+            "examples/textures/posy2.jpg", //   important.
+            "examples/textures/negy2.jpg",
+            "examples/textures/posz2.jpg",
+            "examples/textures/negz2.jpg"
         ];
 		
 		  let textures = loadTextures(textureURLs, render);
@@ -160,7 +160,7 @@
  
         function render() {
             controls.update();
-			controls1.update();/
+			controls1.update();
             stats.update();
             requestAnimationFrame(render);
             renderer.render(scene, camera);
