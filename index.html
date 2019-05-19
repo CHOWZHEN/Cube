@@ -51,12 +51,12 @@
             scene.background = new THREE.CubeTextureLoader()
                 .setPath('examples/textures/').load(
                     [
-                        'posx2.jpg',
-                        'negx2.jpg',
-                        'posy2.jpg',
-                        'negy2.jpg',
-                        'posz2.jpg',
-                        'negz2.jpg'
+                        'posx.jpg',
+                        'negx.jpg',
+                        'poxydzb.jpg',
+                        'negy.jpg',
+                        'posz.jpg',
+                        'negz.jpg'
                     ]
                 );
  
@@ -116,12 +116,12 @@
         function textureBox() {
 		 let geometry = new THREE.BoxGeometry(3, 3, 3, 30, 30, 30);
          let textureURLs = [ // URLs of the six faces of the cube map 
-            "examples/textures/posx2.jpg", // Note:  The order in which
-            "examples/textures/negx2.jpg", //   the images are listed is
-            "examples/textures/posy2.jpg", //   important.
-            "examples/textures/negy2.jpg",
-            "examples/textures/posz2.jpg",
-            "examples/textures/negz2.jpg"
+            "examples/textures/posx.jpg", // Note:  The order in which
+            "examples/textures/negx.jpg", //   the images are listed is
+            "examples/textures/poxydzb.jpg", //   important.
+            "examples/textures/negy.jpg",
+            "examples/textures/posz.jpg",
+            "examples/textures/negz.jpg"
         ];
 		
 		  let textures = loadTextures(textureURLs, render);
@@ -171,3 +171,4 @@
  
 </body>
 </html>
+
