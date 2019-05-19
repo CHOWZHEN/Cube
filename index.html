@@ -90,17 +90,58 @@
             controls.autoRotate = false;
             controls.enableKeys = true;
         }
+		
+		
+		//
+		function loadTextures(textureURLs, callback) {
+    var loaded = 0;
+
+    function loadedOne() {
+        loaded++;
+        if (callback && loaded == textureURLs.length) {
+            for (var i = 0; i < textureURLs; i++)
+                textures[i].needsUpdate = true;
+            callback();
+        }
+    }
+    var textures = [];
+    for (var i = 0; i < textureURLs.length; i++) {
+        var tex = THREE.ImageUtils.loadTexture(textureURLs[i], undefined, loadedOne);
+        textures.push(tex);
+    }
+    return textures;
+}
+
  
         function textureBox() {
-            let geometry = new THREE.BoxGeometry(3, 3, 3, 30, 30, 30);
-            let map = new THREE.TextureLoader().load('examples/textures/3.jpg');
-            let material = new THREE.MeshPhongMaterial({map:map});
-            let box = new THREE.Mesh(geometry, material);
- 
-            scene.add(box);
+		 let geometry = new THREE.BoxGeometry(3, 3, 3, 30, 30, 30);
+         let textureURLs = [ // URLs of the six faces of the cube map 
+            "examples/textures/posx.jpg", // Note:  The order in which
+            "examples/textures/negx.jpg", //   the images are listed is
+            "examples/textures/posy.jpg", //   important.
+            "examples/textures/negy.jpg",
+            "examples/textures/posz.jpg",
+            "examples/textures/negz.jpg"
+        ];
+		
+		  let textures = loadTextures(textureURLs, render);
+		  let materials = [];
+           for (var i = 0; i < 6; i++) 
+		   {
+            materials.push(new THREE.MeshPhongMaterial({
+                color: "white",
+                map: textures[i]
+              }));
         }
- 
-        function initStats(container2) {
+           let box = new THREE.Mesh(geometry, new THREE.MeshFaceMaterial(materials));
+		   scene.add(box);
+ }
+        
+		
+		
+		
+		
+		function initStats(container2) {
             stats = new Stats();
             stats.setMode(0);
  
@@ -119,7 +160,7 @@
  
         function render() {
             controls.update();
-			controls1.update();
+			//controls1.update();
             stats.update();
             requestAnimationFrame(render);
             renderer.render(scene, camera);
